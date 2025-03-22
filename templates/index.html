@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="/styles">
 </head>
 <body>
-    <form method="post" action="/solve">
+    <form method="post" action="/solve" class="field">
         {% for i in 0..9 %}
-        <div style="display: flex;">
+        <div class="row">
             {% for j in 0..9 %}
-            <input type="text" name="cell{{ i }}-{{ j }}" maxlength="1" pattern="[1-9]" style="width: 10px; background-color: {{ funcs.get_color(i, j) }}; color: white; font-width: ">
+            <input type="text" class="cell" name="cell{{ i }}-{{ j }}" maxlength="1" pattern="[1-9]" style="background-color: {{ funcs.get_color(i, j) }}; box-shadow: 3px 3px {{ funcs.get_shadow_color(i, j) }};">
             {% endfor %}
         </div>
         {% endfor %}
-        <button type="submit">Подтвердить</button>
+        <button type="submit" class="submit-button">Подтвердить</button>
     </form>
 </body>
 </html>

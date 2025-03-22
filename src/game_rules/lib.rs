@@ -1,6 +1,7 @@
 use std::{
     cell::{RefCell, RefMut},
     fmt::{Debug, Display},
+    slice::Iter,
 };
 
 #[derive(Debug, Clone)]
@@ -156,6 +157,10 @@ impl Field {
         }
 
         res
+    }
+
+    pub fn iter(&self) -> Iter<[RefCell<FieldCell>; 9]>{
+        self.cells.iter()
     }
 }
 

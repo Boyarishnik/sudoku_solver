@@ -1,0 +1,47 @@
+body {
+    background: linear-gradient(45deg, #101010, #002010);
+}
+
+.row {
+    display: flex;
+    gap: 5px;
+}
+
+.field {
+    margin: calc(50vh - 200px) auto;
+    height: 400px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.cell, .submit-button {
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 2px 2px black;
+}
+
+.submit-button {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 65%;
+    text-decoration: none;
+    margin-top: 5px;
+    background: linear-gradient(90deg, #20F080, #80F020);
+    box-shadow: 5px 5px #30D030;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+    padding: 0px;
+    border-radius: 5px;
+}
