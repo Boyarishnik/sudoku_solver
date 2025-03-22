@@ -3,4 +3,20 @@ name = "sudoku_solver"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name="sudoku_rules"
+path="src/game_rules/lib.rs"
+
+[[bin]]
+name="console_sudoku"
+path="src/console/main.rs"
+
+[[bin]]
+name="webapp"
+path="src/webapp/main.rs"
+
 [dependencies]
+askama = "0.12.1"
+axum = "0.7"
+serde = { version = "1.0.219", features = ["derive"] }
+tokio = { version = "1.44.1", features = ["rt-multi-thread", "fs", "io-util"] }

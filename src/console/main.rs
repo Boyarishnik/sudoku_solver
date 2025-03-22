@@ -1,7 +1,5 @@
-mod game_rules;
-
-use game_rules::field::Field;
 use std::io;
+use sudoku_rules::Field;
 
 fn main() {
     let stdin = io::stdin();
@@ -25,7 +23,7 @@ fn main() {
                     println!("Не робит");
                 }
             }
-            
+
             [row, col, val] => {
                 if let Ok(_) = f.try_push((row, col), val as u8) {
                     println!("Все круто\n{f}");
@@ -33,7 +31,7 @@ fn main() {
                     println!("Не получилось:(");
                 }
             }
-            
+
             [0] => {
                 f.solve().expect("Не получилось достроить решение");
                 println!("{f}");

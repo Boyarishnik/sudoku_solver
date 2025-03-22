@@ -10,9 +10,7 @@ pub struct FieldCell {
 
 impl FieldCell {
     pub fn new() -> Self {
-        Self {
-            value: None,
-        }
+        Self { value: None }
     }
 
     pub fn value(&self) -> Option<u8> {
@@ -57,18 +55,14 @@ impl Field {
         if self.get_possible_vals(position).contains(&number) {
             let mut cell = self.cells[position.0][position.1].borrow_mut();
             cell.set_value(number)?;
+            return Ok(());
         }
-
-        Ok(())
+        Err(())
     }
 
     fn get_next_empty(&self, position: (usize, usize)) -> Option<(usize, usize)> {
         for i in position.1..9 {
-            if self.cells[position.0][i]
-                .borrow()
-                .value()
-                .is_none()
-            {
+            if self.cells[position.0][i].borrow().value().is_none() {
                 return Some((position.0, i));
             }
         }
@@ -98,7 +92,9 @@ impl Field {
     }
 
     pub fn cancel_insertion(&mut self, position: (usize, usize)) -> Result<(), ()> {
-        self.cells[position.0][position.1].borrow_mut().delete_value();
+        self.cells[position.0][position.1]
+            .borrow_mut()
+            .delete_value();
 
         Ok(())
     }
@@ -120,7 +116,7 @@ impl Field {
                 }
             }
 
-            return Err(())
+            return Err(());
         }
 
         Ok(())

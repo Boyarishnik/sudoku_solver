@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="/solve">
+        {% for i in 0..9 %}
+        <div style="display: flex;">
+            {% for j in 0..9 %}
+            <input type="text" name="cell{{ i }}-{{ j }}" maxlength="1" pattern="[1-9]" style="width: 10px; background-color: {{ funcs.get_color(i, j) }}; color: white; font-width: ">
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <button type="submit">Подтвердить</button>
+    </form>
+</body>
+</html>
