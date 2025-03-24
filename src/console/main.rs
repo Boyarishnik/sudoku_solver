@@ -16,13 +16,7 @@ fn main() {
             .map(|x| x.parse::<usize>().unwrap())
             .collect::<Vec<usize>>()[..]
         {
-            [100, row, col] => {
-                if let Ok(_) = f.cancel_insertion((row, col)) {
-                    println!("Отмена удалась\n{f}");
-                } else {
-                    println!("Не робит");
-                }
-            }
+            [100, row, col] => f.cancel_insertion((row, col)),
 
             [row, col, val] => {
                 if let Ok(_) = f.try_push((row, col), val as u8) {

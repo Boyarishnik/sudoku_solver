@@ -92,12 +92,10 @@ impl Field {
             .collect()
     }
 
-    pub fn cancel_insertion(&mut self, position: (usize, usize)) -> Result<(), ()> {
+    pub fn cancel_insertion(&mut self, position: (usize, usize)) {
         self.cells[position.0][position.1]
             .borrow_mut()
             .delete_value();
-
-        Ok(())
     }
 
     pub fn solve(&mut self) -> Result<(), ()> {
@@ -112,7 +110,7 @@ impl Field {
                 if let Ok(_) = self.try_push(cell_pos, i) {
                     match self.rec_solve((position.0, position.1 + 1)) {
                         Ok(_) => return Ok(()),
-                        Err(_) => self.cancel_insertion(cell_pos).unwrap(),
+                        Err(_) => self.cancel_insertion(cell_pos),
                     }
                 }
             }
